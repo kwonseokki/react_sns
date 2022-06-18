@@ -25,6 +25,7 @@ let TitleLogo = styled.div`
     font-family: 'Dancing Script', cursive;
     font-size:${props => props.f_s};
 `;
+
 // 인풋 컴포넌트
 let UserInput = styled.input`
     border: none;
@@ -38,14 +39,8 @@ let HeaderIcons = styled.div`
     letter-spacing:5px
 `;
 
-let OuterBox = styled.div`
-    width:${props => props.w};
-    height:${props => props.h};
-    margin:${props => props.m};
-    background:${props => props.bg};
-    border:1px solid lightgrey;
-    overflow:hidden;
-`;
 
 
-export { Header, HeaderContents, TitleLogo, HeaderIcons, OuterBox, UserInput}
+
+
+export { Header, HeaderContents, TitleLogo, HeaderIcons, UserInput}
