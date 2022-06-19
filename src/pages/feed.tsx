@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { ModalBox, PostionBox, SpanText, CircleImg, FlexBox, PostOverlay, OuterBox, UserCommentBtn } from '../css/style.js'
-import { addLikeList } from '../store.js';
+import { addLikeList } from '../store.ts';
 
 /*  피드컴포넌트 */
 
 const Feed = ({ postData, setPostData, idx }) => {
     let dispatch = useDispatch();
-    let [isOpen, setIsOpen] = useState(false);
+    let [isOpen, setIsOpen] = useState<boolean>(false);
     // CommentBox 시작
-    const CommentBox = ({ userPost, setIsOpen, setPostData, idx }) => {
+    const CommentBox = ({ userPost, setIsOpen, setPostData, idx }): JSX.Element => {
         return (
             <PostOverlay className='comment-overlay' bg="rgba(0,0,0,0.8)" onClick={(e) => {
                 e.preventDefault();
@@ -19,7 +19,7 @@ const Feed = ({ postData, setPostData, idx }) => {
                 return;
             }}>
                 {/* 댓글모달창 */}
-                <ModalBox ps="relative" ps_t="50%" ps_l="50%">
+                <ModalBox ps="relative" ps_t="50%" ps_l="50%" style={{maxWidth:"925px"}}>
                     {/* 사진 BOX */}
                     <PostionBox w="70%" h="700px" ps="absolute" bgMode bg={userPost.postImage}>
                     </PostionBox>
@@ -40,7 +40,6 @@ const Feed = ({ postData, setPostData, idx }) => {
                                 <ul>
                                     {userPost.comments.map((getComment, i) => {
                                         return (
-
                                             <li>
                                                 <FlexBox dp="flex" a_i="center">
                                                 </FlexBox>

@@ -1,24 +1,23 @@
 import './App.css';
 import { Header, HeaderContents, TitleLogo, HeaderIcons } from './css/component.js';
-import { Feed } from './pages/feed.js';
+import { Feed } from './pages/feed.tsx';
 import { PostBox } from './pages/post.js'
-import { LoginPage } from './pages/login';
+import { LoginPage } from './pages/login.tsx';
 import { LikePage } from './pages/like.js';
 import tempData from './temp/temp.js';
 import { useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-
-
+import { feedList } from './pages/interface.tsx'
 
 function App() {
-  let [isLogin, setIsLogin] = useState(true);   // 로그인상태 
+  let [isLogin, setIsLogin] = useState<boolean>(true);   // 로그인상태 
   /*  글발행 단계
   0글작성X / 1사진 및 필터선택 / 2 글입력 => 완료시 다시0으로
   */
-  let [postStep, setPostStep] = useState(0);
-  let [dispLike, setDispLike] = useState(false);
+  let [postStep, setPostStep] = useState<number>(0);
+  let [dispLike, setDispLike] = useState<boolean>(false);
   // 피드목록 더미데이터
-  let [postData, setPostData] = useState(tempData);
+  let [postData, setPostData] = useState<feedList>(tempData);
 
   let navigator = useNavigate();
   useEffect(() => {
@@ -42,7 +41,7 @@ function App() {
                   <TitleLogo f_s="1.5rem">seokstagram</TitleLogo>
                   <HeaderIcons>
                     <span onClick={() => { setPostStep(1) }}>
-                      <i class="fi fi-ss-add document"></i>
+                      <i className="fi fi-ss-add document"></i>
                     </span>
                     <span style={{ position: "relative" }} onClick={() => {
 
@@ -54,7 +53,7 @@ function App() {
                       }
 
                     }}
-                    >  <i class="fi fi-ss-comment-heart"></i>
+                    >  <i className="fi fi-ss-comment-heart"></i>
                       {dispLike == true ? <LikePage></LikePage> : null}
                     </span>
                   </HeaderIcons>
@@ -66,7 +65,7 @@ function App() {
             {/* 헤더 끝 */}
             <div className='container'>
               {
-                postData.map((json, idx) => {
+                postData.map((json: object, idx: number) => {
                   return (
                     <Feed postData={postData} setPostData={setPostData} idx={idx} />
                   )
@@ -77,7 +76,7 @@ function App() {
 
             </div>
             {/* postStep > 0 PostBox컴포넌트 렌더링 */}
-            {postStep != 0 ? <PostBox postStep={postStep} setPostStep={setPostStep} postData={postData} setPostData={setPostData} tempData={tempData}></PostBox> : null}
+            {postStep != 0 ? <PostBox postStep={postStep} setPostStep={setPostStep} postData={postData} setPostData={setPostData} ></PostBox> : null}
           </div>}>
 
         </Route>

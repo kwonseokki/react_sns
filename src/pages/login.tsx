@@ -1,10 +1,11 @@
-import { useDispatch } from "react-redux";
+import React, { InputHTMLAttributes } from "react";
+
 import { TitleLogo, UserInput } from "../css/component";
 import { OuterBox } from '../css/style.js';
 
-interface login {
-    id?:"string";
-    pw?:"string"
+interface loginForm {
+    id:string;
+    pw:string;
 }
 
 
@@ -18,15 +19,20 @@ const LoginPage = ({ setIsLogin, navigator }) => {
             <OuterBox bg="#fff" w="30%" h="500px" m="0 20px" style={{ minWidth: "321px", maxWidth: "400px" }}>
                 <form name="login_validation" id="login-form">
                     <TitleLogo f_s="2rem">seokstagram</TitleLogo>
-                    <UserInput bg="#FAFAFA" p="15px" type="text" name="id" placeholder="아이디를 입력해주세요."></UserInput>
-                    <UserInput bg="#FAFAFA" p="15px" type="password" name="pw" placeholder="비밀번호를 입력해주세요."></UserInput>
+                    <UserInput bg="#FAFAFA" p="15px" type="text" id="form-id" name="id" placeholder="아이디를 입력해주세요."></UserInput>
+                    <UserInput bg="#FAFAFA" p="15px" type="password" id="form-pw"  name="pw" placeholder="비밀번호를 입력해주세요."></UserInput>
 
                     <div onClick={(e) => {
                         e.preventDefault();
-                        const form = document.login_validation;
-                        const loginData: login = {}
-                        loginData.id = form.id.value;
-                        loginData.pw = form.pw.value;
+                        const form = document.querySelector('#login-form');
+                        
+                        const loginData: loginForm = { id:"",pw:""};
+                        const formId: string = form.id.value;
+                        const formPw: string = form.pw.value;
+                           
+                        
+                        loginData.id = formId;
+                        loginData.pw = formPw;
                       
 
                         if (loginData.id.length > 8 && loginData.pw.length > 8) {

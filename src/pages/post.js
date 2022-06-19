@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { filters } from '../temp/filter.js';
-import { setObj } from '../store.js';
+import { setObj } from '../store.ts';
 import { ModalBox, PostionBox, CircleImg, FlexBox, PostOverlay, InnerList } from '../css/style.js'
 import { useEffect, useState } from 'react';
 // PostBox:글발행 컴포넌트
@@ -14,7 +14,7 @@ const PostBox = ({ postStep, setPostStep, postData, setPostData }) => {
     return (
         <div>
             <PostOverlay bg="rgba(0,0,0,0.4)">
-                <ModalBox w="80%" h="80vh" ps="relative" ps_t="50%" ps_l="50%" tf="translate(-50%, -50%)" style={{ borderRadius: "20px" }}>
+                <ModalBox w="80%" h="80vh" ps="relative" ps_t="50%" ps_l="50%" tf="translate(-50%, -50%)" style={{ borderRadius: "20px", maxWidth:"925px"}}>
                     <FlexBox j_c="space-between" a_i="center" bg="#fff" style={{ padding: "10px" }}>
                         {/* postStep상태에 따라서 모달창 상단 변경 */}
                         <span onClick={() => {
@@ -32,7 +32,6 @@ const PostBox = ({ postStep, setPostStep, postData, setPostData }) => {
                             const copyNewPost = JSON.parse(JSON.stringify(newPost));
                             const addNewPost = [copyNewPost, ...postData];
                             setPostData(addNewPost);
-                            console.log(addNewPost);
                         }}>완료</span> : <span onClick={() => {
                             if (isFile !== true) {
                                 alert("사진을 등록해주세요.");
