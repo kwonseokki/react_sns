@@ -1,15 +1,15 @@
-import { useState } from 'react';
+import { ReactHTMLElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { ModalBox, PostionBox, SpanText, CircleImg, FlexBox, PostOverlay, OuterBox, UserCommentBtn } from '../css/style.js'
-import { addLikeList } from '../store.ts';
+import { addLikeList } from '../store.js';
 
 /*  피드컴포넌트 */
 
 const Feed = ({ postData, setPostData, idx }) => {
     let dispatch = useDispatch();
-    let [isOpen, setIsOpen] = useState<boolean>(false);
+    let [isOpen, setIsOpen] = useState(false);
     // CommentBox 시작
-    const CommentBox = ({ userPost, setIsOpen, setPostData, idx }): JSX.Element => {
+    const CommentBox = ({ userPost, setIsOpen, setPostData, idx }) => {
         return (
             <PostOverlay className='comment-overlay' bg="rgba(0,0,0,0.8)" onClick={(e) => {
                 e.preventDefault();
@@ -56,7 +56,7 @@ const Feed = ({ postData, setPostData, idx }) => {
                                 <input id="input-commnet" style={{ border: "none", width: "80%", height: "50px", fontSize: "1.2rem" }}></input>
                                 {/* 댓글입력 */}
                                 <UserCommentBtn onClick={() => {
-                                    const userInput = document.getElementById('input-commnet').value;
+                                    const userInput  = document.getElementById('input-commnet').value;
                                     const addNewComment = [...postData];
                                     const getAcount = JSON.parse(localStorage.getItem('acount'));
                                     const getName = getAcount.id;
@@ -104,10 +104,10 @@ const Feed = ({ postData, setPostData, idx }) => {
                         }
                         setPostData(getPost);
                     }}>
-                        <i class="fi fi-bs-heart"></i>
+                        <i className="fi fi-bs-heart"></i>
                     </SpanText>
                     <SpanText>
-                        <i class="fi fi-rs-comments"></i>
+                        <i className="fi fi-rs-comments"></i>
                     </SpanText>
                 </FlexBox>
                 {/* 글본문 */}

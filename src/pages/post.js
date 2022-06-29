@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { filters } from '../temp/filter.js';
-import { setObj } from '../store.ts';
+import { setObj } from '../store.js';
 import { ModalBox, PostionBox, CircleImg, FlexBox, PostOverlay, InnerList } from '../css/style.js'
 import { useEffect, useState } from 'react';
 // PostBox:글발행 컴포넌트

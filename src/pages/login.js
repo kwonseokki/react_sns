@@ -3,10 +3,6 @@ import React, { InputHTMLAttributes } from "react";
 import { TitleLogo, UserInput } from "../css/component";
 import { OuterBox } from '../css/style.js';
 
-interface loginForm {
-    id:string;
-    pw:string;
-}
 
 
 const LoginPage = ({ setIsLogin, navigator }) => {
@@ -26,9 +22,9 @@ const LoginPage = ({ setIsLogin, navigator }) => {
                         e.preventDefault();
                         const form = document.querySelector('#login-form');
                         
-                        const loginData: loginForm = { id:"",pw:""};
-                        const formId: string = form.id.value;
-                        const formPw: string = form.pw.value;
+                        const loginData = { id:"",pw:""};
+                        const formId = form.id.value;
+                        const formPw = form.pw.value;
                            
                         
                         loginData.id = formId;
